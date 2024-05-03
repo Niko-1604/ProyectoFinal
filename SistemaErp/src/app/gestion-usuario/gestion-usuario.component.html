@@ -1,0 +1,184 @@
+<body>
+  <h1>Gestión de Nómina</h1>
+
+  <button
+    type="button"
+    class="btn btn-primary btn-agregar-empleado"
+    data-toggle="modal"
+    data-target="#addServiceModal"
+  >
+    Agregar Empleado
+  </button>
+  kyuuuuuuuulluk,
+
+  <div class="modal" tabindex="-1" role="dialog" id="addServiceModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Agregar Empleado</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nombreServicio">Nombre </label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombreServicio"
+              required
+              [(ngModel)]="datosNomina.nombre"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nombreServicio">Apellido </label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombreServicio"
+              required
+              [(ngModel)]="datosNomina.apellido"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nombreServicio">permiso </label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombreServicio"
+              required
+              [(ngModel)]="datosNomina.permiso"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nombreServicio">status </label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombreServicio"
+              required
+              [(ngModel)]="datosNomina.status"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nombreServicio">salarios </label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombreServicio"
+              required
+              [(ngModel)]="datosNomina.salario"
+            />
+          </div>
+
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cancelar
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="agregarEmpleado()"
+          >
+            Agregar
+          </button>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre del Responsable</th>
+        <th>Apellido</th>
+        <th>permiso</th>
+        <th>status</th>
+        <th>salario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nomina of arrayNomina">
+        <td>{{ nomina.id }}</td>
+        <td>{{ nomina.nombre }}</td>
+        <td>{{ nomina.apellido }}</td>
+        <td>{{ nomina.permiso }}</td>
+        <td>{{ nomina.status }}</td>
+        <td>{{ nomina.salario }}</td>
+
+        <td>
+          <button class="btn-edit" onclick="editRow(this)">Editar</button>
+          <button class="btn-delete" (click)="eliminarServico(nomina.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="container">
+    <h1>Evaluación del Desempeño</h1>
+    <form>
+      <h2>Información del Empleado</h2>
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        placeholder="Nombre completo del empleado"
+      />
+
+      <label for="departamento">Departamento:</label>
+      <input
+        type="text"
+        id="departamento"
+        name="departamento"
+        placeholder="Departamento"
+      />
+
+      <label for="fecha">Fecha de Evaluación:</label>
+      <input type="date" id="fecha" name="fecha" />
+
+      <h2>Criterios de Evaluación</h2>
+      <label for="rendimiento">Rendimiento General:</label>
+      <select id="rendimiento" name="rendimiento">
+        <option value="excelente">Excelente</option>
+        <option value="bueno">Bueno</option>
+        <option value="satisfactorio">Satisfactorio</option>
+        <option value="necesita_mejora">Necesita Mejora</option>
+      </select>
+
+      <label for="comunicacion">Comunicación:</label>
+      <select id="comunicacion" name="comunicacion">
+        <option value="excelente">Excelente</option>
+        <option value="bueno">Bueno</option>
+        <option value="satisfactorio">Satisfactorio</option>
+        <option value="necesita_mejora">Necesita Mejora</option>
+      </select>
+
+      <label for="puntualidad">Puntualidad:</label>
+      <select id="puntualidad" name="puntualidad">
+        <option value="excelente">Excelente</option>
+        <option value="bueno">Bueno</option>
+        <option value="satisfactorio">Satisfactorio</option>
+        <option value="necesita_mejora">Necesita Mejora</option>
+      </select>
+
+      <label for="comentarios">Comentarios Adicionales:</label>
+      <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+
+      <button type="submit" class="button">Enviar Evaluación</button>
+    </form>
+  </div>
+</body>

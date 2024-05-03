@@ -1,0 +1,77 @@
+<body>
+  <table id="tablaProductos">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Marca</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nomina of arrayProductos">
+        <td>{{ nomina.id }}</td>
+        <td>{{ nomina.descripcionProd }}</td>
+        <td>{{ nomina.marca }}</td>
+        <td>{{ nomina.cantidad }}</td>
+        <td>{{ nomina.precio }}</td>
+        <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Zapatillas deportivas</td>
+        <td>Nike</td>
+        <td>30</td>
+        <td>$100</td>
+        <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+      </tr>
+      <!-- Más filas según sea necesario -->
+    </tbody>
+  </table>
+</body>
+
+<table id="tablaAlmacenes">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre del Almacén</th>
+      <th>Dirección</th>
+      <th>Teléfono</th>
+      <th>Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let nomina of arrayAlmacen">
+      <td>{{ nomina.id }}</td>
+      <td>{{ nomina.nombreAlmacen }}</td>
+      <td>{{ nomina.direccion }}</td>
+      <td>{{ nomina.telefono }}</td>
+      <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+    </tr>
+    <!-- Más filas según sea necesario -->
+  </tbody>
+</table>
+
+<table id="tablaMarcas">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre de la Marca</th>
+      <th>Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Apple</td>
+      <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Samsung</td>
+      <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+    </tr>
+  </tbody>
+</table>

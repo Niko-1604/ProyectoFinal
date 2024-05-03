@@ -1,0 +1,93 @@
+<body>
+  <div class="container">
+    <h1>Listado de Clientes</h1>
+    <table id="tablaClientes">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Dirección</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let nomina of arrayCliente">
+          <td>{{ nomina.id }}</td>
+          <td>{{ nomina.nombre }}</td>
+          <td>{{ nomina.apellido }}</td>
+          <td>{{ nomina.correo }}</td>
+          <td>{{ nomina.telefono }}</td>
+          <td>{{ nomina.direccion }}</td>
+          <td>
+            <button onclick="eliminarFila(this)" class="delete-btn">
+              Eliminar
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-primary btn-agregar-empleado"
+              data-toggle="modal"
+              data-target="#addServiceModal"
+              (click)="obtenerCorreoo(nomina.correo)"
+            >
+              Enivar
+            </button>
+          </td>
+        </tr>
+        <!-- Más filas según sea necesario -->
+      </tbody>
+    </table>
+  </div>
+</body>
+
+<div class="modal" tabindex="-1" role="dialog" id="addServiceModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Empleado</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="nombreServicio">Asunto </label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombreServicio"
+            required
+            [(ngModel)]="asunto"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="nombreServicio">Texto </label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombreServicio"
+            required
+            [(ngModel)]="texto"
+          />
+        </div>
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="enviar()">
+          Agregar
+        </button>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<body>
+  <h1>Análisis Financiero en Tiempo Real</h1>
+  <div class="dashboard">
+    <div class="card">
+      <h2>Total Salarios</h2>
+      <p>{{ arraySalariosTotal[0].total_salarios }}</p>
+    </div>
+    <div class="card">
+      <h2>Salario mas Alto</h2>
+      <p>{{ arraySalariosTotal[0].salario_maximo }}</p>
+    </div>
+    <div class="card">
+      <h2>Salario mas Bajos</h2>
+      <p>{{ arraySalarioMenor[0].salario_menor }}</p>
+    </div>
+    <div class="card">
+      <h2>Deuda Total</h2>
+      <p>$500,000</p>
+    </div>
+    <div class="card">
+      <h2>Efectivo Disponible</h2>
+      <p>$350,000</p>
+    </div>
+  </div>
+</body>
+
+<div class="container">
+  <h1>Gestión de Riesgos</h1>
+  <h2>Añadir Nuevo Riesgo</h2>
+  <div>
+    <input
+      type="text"
+      class="form-input"
+      placeholder="Descripción del Riesgo"
+      required
+      [(ngModel)]="datosGestion.descripcion"
+    />
+    <input
+      type="text"
+      class="form-input"
+      placeholder="Probabilidad (Alta, Media, Baja)"
+      required
+      [(ngModel)]="datosGestion.probabilidad"
+    />
+    <input
+      type="text"
+      class="form-input"
+      placeholder="Impacto (Alto, Medio, Bajo)"
+      required
+      [(ngModel)]="datosGestion.impacto"
+    />
+    <input
+      type="text"
+      class="form-input"
+      placeholder="Medidas de Mitigación"
+      required
+      [(ngModel)]="datosGestion.medidas"
+    />
+    <input
+      type="text"
+      class="form-input"
+      placeholder="Estado (No mitigado, En proceso, Mitigado)"
+      required
+      [(ngModel)]="datosGestion.estado"
+    />
+    <button type="submit" class="button" (click)="guardarRiesgo()">
+      Añadir Riesgo
+    </button>
+  </div>
+</div>
+<div class="container">
+  <h2>Lista de Riesgos</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Descripción</th>
+        <th>Probabilidad</th>
+        <th>Impacto</th>
+        <th>Medidas de Mitigación</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nomina of arrayRiesgos">
+        <td>{{ nomina.id }}</td>
+        <td>{{ nomina.descripcion }}</td>
+        <td>{{ nomina.probabilidad }}</td>
+        <td>{{ nomina.impacto }}</td>
+        <td>{{ nomina.medidasMitigacion }}</td>
+        <td>{{ nomina.estados }}</td>
+
+        <td>
+          <button class="btn-edit" onclick="editRow(this)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
