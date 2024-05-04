@@ -79,6 +79,10 @@ export class dataServices {
     return this.httpClient.get(this.url + 'sleccionarAlmacen');
   }
 
+  cargarMarcas(): Observable<any> {
+    return this.httpClient.get(this.url + 'seleccionarMarcas');
+  }
+
   guardarRiesgo(caracteristicasEmpleados: gestionRiegos): Observable<any> {
     return this.httpClient.post(
       this.url + 'guardarRiesgos',
@@ -102,6 +106,41 @@ export class dataServices {
     console.log(this.url + 'eliminarEmpleados' + '/' + EmpleadoID);
     return this.httpClient.delete(
       this.url + 'eliminarEmpleados' + '/' + EmpleadoID
+    );
+  }
+
+  eliminarRiesgos(idRiesgo: any): Observable<any> {
+    console.log(this.url + 'eliminarRiesgos' + '/' + idRiesgo);
+    return this.httpClient.delete(
+      this.url + 'eliminarRiesgos' + '/' + idRiesgo
+    );
+  }
+
+  eliminarProducto(idProducto: any): Observable<any> {
+    console.log(this.url + 'eliminarProducto' + '/' + idProducto);
+    return this.httpClient.delete(
+      this.url + 'eliminarProducto' + '/' + idProducto
+    );
+  }
+
+  eliminarAlmacen(idAlmacen: any): Observable<any> {
+    console.log(this.url + 'eliminarAlmacen' + '/' + idAlmacen);
+    return this.httpClient.delete(
+      this.url + 'eliminarAlmacen' + '/' + idAlmacen
+    );
+  }
+
+  eliminarMarcas(idMarca: any): Observable<any> {
+    console.log(this.url + 'eliminarMarcas' + '/' + idMarca);
+    return this.httpClient.delete(
+      this.url + 'eliminarMarcas' + '/' + idMarca
+    );
+  }
+
+  eliminarCliente(idCliente: any): Observable<any> {
+    console.log(this.url + 'eliminarCliente' + '/' + idCliente);
+    return this.httpClient.delete(
+      this.url + 'eliminarCliente' + '/' + idCliente
     );
   }
 

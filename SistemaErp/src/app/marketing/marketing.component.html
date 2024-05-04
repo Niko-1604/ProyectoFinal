@@ -22,7 +22,7 @@
           <td>{{ nomina.telefono }}</td>
           <td>{{ nomina.direccion }}</td>
           <td>
-            <button onclick="eliminarFila(this)" class="delete-btn">
+            <button class="btn-delete" (click)="eliminarCliente(nomina.id)">
               Eliminar
             </button>
 

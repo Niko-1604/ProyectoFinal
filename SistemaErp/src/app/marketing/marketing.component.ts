@@ -42,4 +42,17 @@ export class MarketingComponent {
         }
       );
   }
+
+  eliminarCliente(idCliente: any): void {
+    this.datos.eliminarCliente(idCliente).subscribe(
+      (response) => {
+        console.log('exito', response);
+      },
+      (error) => {
+        location.reload();
+        // Manejar errores aquí...
+      }
+    );
+  }
+
 }

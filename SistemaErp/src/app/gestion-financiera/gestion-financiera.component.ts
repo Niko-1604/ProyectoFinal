@@ -68,4 +68,19 @@ export class GestionFinancieraComponent {
       }
     );
   }
+
+  eliminarRiesgo(idRiesgo: any): void {
+    this.datos.eliminarRiesgo(idRiesgo).subscribe(
+      (response) => {
+        console.log('exito', response);
+      },
+      (error) => {
+        location.reload();
+        // Manejar errores aquí...
+      }
+    );
+  }
+
 }
+
+

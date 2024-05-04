@@ -17,15 +17,9 @@
         <td>{{ nomina.marca }}</td>
         <td>{{ nomina.cantidad }}</td>
         <td>{{ nomina.precio }}</td>
-        <td><button onclick="eliminarFila(this)">Eliminar</button></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Zapatillas deportivas</td>
-        <td>Nike</td>
-        <td>30</td>
-        <td>$100</td>
-        <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+        <button class="btn-delete" (click)="eliminarProducto(nomina.id)">
+          Eliminar
+        </button>
       </tr>
       <!-- Más filas según sea necesario -->
     </tbody>
@@ -48,7 +42,9 @@
       <td>{{ nomina.nombreAlmacen }}</td>
       <td>{{ nomina.direccion }}</td>
       <td>{{ nomina.telefono }}</td>
-      <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+      <button class="btn-delete" (click)="eliminarAlmacen(nomina.id)">
+        Eliminar
+      </button>
     </tr>
     <!-- Más filas según sea necesario -->
   </tbody>
@@ -63,15 +59,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Apple</td>
-      <td><button onclick="eliminarFila(this)">Eliminar</button></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Samsung</td>
-      <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+    <tr *ngFor="let marca of arrayMarcas">
+      <td>{{ marca.id }}</td>
+      <td>{{ marca.nombreMarca }}</td>
+      <td> <button class="btn-delete" (click)="eliminarMarcas(marca.id)">
+        Eliminar
+      </button></td>
     </tr>
   </tbody>
 </table>

@@ -9,12 +9,14 @@ import { ServiciosDatosService } from '../servicios-datos.service';
 export class InventarioComponent {
   arrayProductos: any[] = [];
   arrayAlmacen: any[] = [];
+  arrayMarcas: any[] = [];
 
   constructor(private datos: ServiciosDatosService) {}
 
   ngOnInit(): void {
     this.cargarProductos();
     this.cargarAlmacen();
+    this.cargarMarcas();
   }
   private cargarProductos() {
     this.datos.seleccionarProductos().subscribe((nomina) => {
@@ -29,4 +31,49 @@ export class InventarioComponent {
       console.log(this.arrayAlmacen);
     });
   }
+
+  private cargarMarcas() {
+    this.datos.seleccionarMarcas().subscribe((nomina) => {
+      this.arrayMarcas = Object.values(nomina);
+      console.log(this.arrayMarcas);
+    });
+  }
+
+  eliminarProducto(idProducto: any): void {
+    this.datos.eliminarProducto(idProducto).subscribe(
+      (response) => {
+        console.log('exito', response);
+      },
+      (error) => {
+        location.reload();
+        // Manejar errores aquí...
+      }
+    );
+  }
+
+  eliminarAlmacen(idAlmacen: any): void {
+    this.datos.eliminarAlmacen(idAlmacen).subscribe(
+      (response) => {
+        console.log('exito', response);
+      },
+      (error) => {
+        location.reload();
+        // Manejar errores aquí...
+      }
+    );
+  }
+
+  eliminarMarcas(idMarca: any): void {
+    this.datos.eliminarMarcas(idMarca).subscribe(
+      (response) => {
+        console.log('exito', response);
+      },
+      (error) => {
+        location.reload();
+        // Manejar errores aquí...
+      }
+    );
+  }
+
+
 }

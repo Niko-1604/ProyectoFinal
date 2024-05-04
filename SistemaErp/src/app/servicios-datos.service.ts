@@ -16,6 +16,11 @@ export class ServiciosDatosService {
     return this.datos.seleccionarTotalSalario();
   }
 
+  seleccionarMarcas() {
+    return this.datos.cargarMarcas();
+  }
+
+
   guardarEmpleado(caracteristicas: DatosNomina) {
     return this.datos.guardarEmpleado(caracteristicas);
   }
@@ -29,6 +34,26 @@ export class ServiciosDatosService {
   }
   eliminarEmpleado(EmpleadoID: any) {
     return this.datos.eliminarEmpleado(EmpleadoID);
+  }
+
+  eliminarRiesgo(idRiesgo: any) {
+    return this.datos.eliminarRiesgos(idRiesgo);
+  }
+
+  eliminarProducto(idProducto: any) {
+    return this.datos.eliminarProducto(idProducto);
+  }
+
+  eliminarAlmacen(idAlmacen: any) {
+    return this.datos.eliminarAlmacen(idAlmacen);
+  }
+
+  eliminarMarcas(idMarca: any) {
+    return this.datos.eliminarMarcas(idMarca);
+  }
+
+  eliminarCliente(idCliente: any) {
+    return this.datos.eliminarCliente(idCliente);
   }
 
   seleccionarRiesgo() {

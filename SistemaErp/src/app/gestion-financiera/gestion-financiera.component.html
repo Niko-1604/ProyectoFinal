@@ -7,19 +7,11 @@
     </div>
     <div class="card">
       <h2>Salario mas Alto</h2>
-      <p>{{ arraySalariosTotal[0].salario_maximo }}</p>
+      <p>{{ arraySalarioMayor[0].salario_maximo }}</p>
     </div>
     <div class="card">
       <h2>Salario mas Bajos</h2>
       <p>{{ arraySalarioMenor[0].salario_menor }}</p>
-    </div>
-    <div class="card">
-      <h2>Deuda Total</h2>
-      <p>$500,000</p>
-    </div>
-    <div class="card">
-      <h2>Efectivo Disponible</h2>
-      <p>$350,000</p>
     </div>
   </div>
 </body>
@@ -91,9 +83,12 @@
         <td>{{ nomina.estados }}</td>
 
         <td>
-          <button class="btn-edit" onclick="editRow(this)">Eliminar</button>
+          <button class="btn-delete" (click)="eliminarRiesgo(nomina.id)">
+            Eliminar
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+

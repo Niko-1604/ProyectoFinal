@@ -67,6 +67,13 @@ export const seleccionarClientes = async function (req, res) {
   res.send(er);
 };
 
+
+export const seleccionarMarcas = async function (req, res) {
+  const [er] = await pool.query("SELECT * FROM marcastecnologicas");
+  res.send(er);
+};
+
+
 export const eniviarCorreo = async function (req, res) {
   const { asunto, texto, CorreoElectronico } = req.body;
 
@@ -113,5 +120,56 @@ export const gestionRiesgos = async function (req, res) {
     "INSERT INTO `riesgos` ( descripcion, probabilidad, impacto, medidasMitigacion, estados) VALUES ( ?, ?, ?, ?, ?);",
     [descripcion, probabilidad, impacto, medidas, estado]
   );
+  res.send("exitoso");
+};
+
+export const eliminarRiesgo =async function(req,res){
+ 
+  const idRiesgo = req.params.idRiesgo;
+ 
+  await pool.execute("DELETE FROM riesgos WHERE riesgos.id = ?", [idRiesgo]);
+ 
+  res.send("exitoso");
+
+}
+
+export const eliminarProcuto = async function (req, res) {
+  const idProducto = req.params.idProducto;
+ 
+  await pool.execute("DELETE FROM productos WHERE productos.id = ?", [
+    idProducto,
+  ]);
+ 
+  res.send("exitoso");
+};
+
+export const eliminarAlmacen = async function (req, res) {
+  const idAlmacen = req.params.idAlmacen;
+ 
+  await pool.execute("DELETE FROM almacenes WHERE almacenes.id = ?", [
+    idAlmacen,
+  ]);
+ 
+  res.send("exitoso");
+};
+ 
+export const eliminarMarcas = async function (req, res) {
+  const idMarca = req.params.idMarca;
+ 
+  await pool.execute("DELETE FROM marcastecnologicas WHERE marcastecnologicas.id = ?", [
+    idMarca,
+  ]);
+ 
+  res.send("exitoso");
+};
+ 
+
+export const eliminarCliente = async function (req, res) {
+  const idCliente = req.params.idCliente;
+ 
+  await pool.execute("DELETE FROM clientes WHERE clientes.id= ?", [
+    idCliente,
+  ]);
+ 
   res.send("exitoso");
 };
