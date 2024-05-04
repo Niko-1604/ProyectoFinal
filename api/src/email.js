@@ -1,4 +1,7 @@
+//libreria de node para poder trabajr con los servidores de google
+//para poder enviar correos 
 import nodemailer from "nodemailer";
+
 
 export const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",

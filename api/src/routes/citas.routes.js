@@ -16,6 +16,8 @@ import {
   seleccionarTotalSalario,
 } from "../controllers/citas.controller.js";
 
+//Nos ayuda a poner las rutas a redireccionar las funciones
+
 const router = Router();
 router.get("/seleccionar", seleccionarNomina);
 
@@ -31,6 +33,8 @@ router.get("/seleccionarProductos", seleccionarProductos);
 router.get("/sleccionarAlmacen", seleccionarAlmacen);
 router.get("/seleccionarClientes", seleccionarClientes);
 
+
+//
 router.post("/enviarGmail", eniviarCorreo);
 
 router.post("/guardarEmpleados", guardarEmpleados);

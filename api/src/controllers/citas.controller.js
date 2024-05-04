@@ -8,6 +8,8 @@ export const login = async function (req, res) {
     [usuario, contrasenia]
   );
 
+  //Esto hace la logica de los controladores para que funcione el servidor
+
   if (e.length <= 0) {
     res.status(401).json({ success: false, message: "Credenciales inválidas" });
   } else {
@@ -17,6 +19,7 @@ export const login = async function (req, res) {
   }
 };
 
+//
 export const seleccionarNomina = async function (req, res) {
   const [er] = await pool.query("SELECT * FROM nomina");
 
@@ -83,6 +86,7 @@ export const eniviarCorreo = async function (req, res) {
     emailStatus = error;
   }
 };
+
 
 export const guardarEmpleados = async function (req, res) {
   const { nombre, apellido, permiso, status, salario } = req.body;
