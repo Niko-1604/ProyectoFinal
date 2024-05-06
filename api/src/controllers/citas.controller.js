@@ -96,14 +96,25 @@ export const eniviarCorreo = async function (req, res) {
 
 
 export const guardarEmpleados = async function (req, res) {
-  const { nombre, apellido, permiso, status, salario } = req.body;
+  console.log(req.body)
+  const { nombre, apellido, permiso, status, salario, id } = req.body;
 
-  await pool.query(
-    "INSERT INTO nomina (nombre, apellido, permiso, status, salario) VALUES (?, ?, ?, ?, ?)",
-    [nombre, apellido, permiso, status, salario]
-  );
-  res.send("exitoso");
+  if(id != 0){
+    await pool.query(
+      "UPDATE nomina set nombre = ?, apellido = ?, permiso = ?, status = ?, salario = ? WHERE id = ?",
+      [nombre, apellido, permiso, status, salario, id]
+    );
+    res.send("exitoso");
+  }else{
+    await pool.query(
+      "INSERT INTO nomina (nombre, apellido, permiso, status, salario) VALUES (?, ?, ?, ?, ?)",
+      [nombre, apellido, permiso, status, salario]
+    );
+    res.send("exitoso");
+  }
 };
+
+
 
 export const eliminarEmpleados = async function (req, res) {
   const EmpleadoID = req.params.EmpleadoID;
@@ -114,13 +125,22 @@ export const eliminarEmpleados = async function (req, res) {
 };
 
 export const gestionRiesgos = async function (req, res) {
-  const { descripcion, probabilidad, impacto, medidas, estado } = req.body;
+  const { descripcion, probabilidad, impacto, medidasMitigacion, estados,id } = req.body;
 
-  await pool.query(
-    "INSERT INTO `riesgos` ( descripcion, probabilidad, impacto, medidasMitigacion, estados) VALUES ( ?, ?, ?, ?, ?);",
-    [descripcion, probabilidad, impacto, medidas, estado]
-  );
-  res.send("exitoso");
+  if(id != 0){
+    await pool.query(
+      "UPDATE riesgos set descripcion = ?, probabilidad = ?, impacto = ?, medidasMitigacion = ?, estados =? where id = ?;",
+      [descripcion, probabilidad, impacto, medidasMitigacion, estados, id]
+    );
+    res.send("exitoso");
+  }else{
+    await pool.query(
+      "INSERT INTO `riesgos` ( descripcion, probabilidad, impacto, medidasMitigacion, estados) VALUES ( ?, ?, ?, ?, ?);",
+      [descripcion, probabilidad, impacto, medidasMitigacion, estados]
+    );
+    res.send("exitoso");
+  }
+  
 };
 
 export const eliminarRiesgo =async function(req,res){
@@ -133,6 +153,23 @@ export const eliminarRiesgo =async function(req,res){
 
 }
 
+export const guardarProducto = async(req,res)=>{
+  const { id, descripcionProd, marca, cantidad, precio } = req.body;
+
+  if(id != 0){
+    await pool.query(
+      "UPDATE productos set descripcionProd = ?, marca = ?, cantidad = ?, precio = ? where id = ?;",
+      [descripcionProd, marca, cantidad, precio, id]
+    );
+    res.send("exitoso");
+  }else{
+    await pool.query(
+      "INSERT INTO `productos` ( descripcionProd, marca, cantidad, precio) VALUES ( ?, ?, ?, ?);",
+      [descripcionProd, marca, cantidad, precio]);
+    res.send("exitoso");
+  }
+}
+
 export const eliminarProcuto = async function (req, res) {
   const idProducto = req.params.idProducto;
  
@@ -142,6 +179,41 @@ export const eliminarProcuto = async function (req, res) {
  
   res.send("exitoso");
 };
+
+export const guardarAlmacen = async (req,res)=>{
+  const { id, nombreAlmacen, direccion, telefono} = req.body;
+
+  if(id != 0){
+    await pool.query(
+      "UPDATE almacenes set nombreAlmacen = ?, direccion = ?, telefono = ? WHERE id = ?",
+      [nombreAlmacen, direccion, telefono, id]
+    );
+    res.send("exitoso");
+  }else{
+    await pool.query(
+      "INSERT INTO `almacenes` ( nombreAlmacen, direccion, telefono) VALUES ( ?, ?, ?);",
+      [nombreAlmacen, direccion, telefono]);
+    res.send("exitoso");
+  }
+}
+
+export const guardarClientes = async (req,res)=>{
+  console.log(req.body);
+  const { id, nombre, apellido, correo, telefono, direccion} = req.body;
+
+  if(id != 0){
+    await pool.query(
+      "UPDATE clientes set nombre = ?, apellido = ?, correo = ?,  telefono = ?, direccion = ? WHERE id = ?",
+      [nombre, apellido, correo, telefono, direccion, id]
+    );
+    res.send("exitoso");
+  }else{
+    await pool.query(
+      "INSERT INTO `clientes` ( nombre, apellido, correo,telefono, direccion) VALUES ( ?, ?, ?,?,?);",
+      [nombre, apellido, correo, telefono, direccion]);
+    res.send("exitoso");
+  }
+}
 
 export const eliminarAlmacen = async function (req, res) {
   const idAlmacen = req.params.idAlmacen;

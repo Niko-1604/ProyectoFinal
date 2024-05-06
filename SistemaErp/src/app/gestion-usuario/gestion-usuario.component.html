@@ -106,6 +106,7 @@
         <th>permiso</th>
         <th>status</th>
         <th>salario</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -118,9 +119,13 @@
         <td>{{ nomina.salario }}</td>
 
         <td>
-          <button class="btn-edit" onclick="editRow(this)">Editar</button>
           <button class="btn-delete" (click)="eliminarServico(nomina.id)">
             Eliminar
+          </button>
+          <button type="button" class="btn btn-primary" 
+          data-toggle="modal"
+          data-target="#addServiceModal" (click)="seleccionarEmpleado(nomina.id)">
+            Editar
           </button>
         </td>
       </tr>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ServiciosDatosService } from '../servicios-datos.service';
+import { Almacen, Producto } from '../modelos/modelos';
 
 @Component({
   selector: 'app-inventario',
@@ -11,7 +12,22 @@ export class InventarioComponent {
   arrayAlmacen: any[] = [];
   arrayMarcas: any[] = [];
 
-  constructor(private datos: ServiciosDatosService) {}
+  producto: Producto = {
+    cantidad: 0,
+    descripcionProd: "",
+    id: 0,
+    marca: "",
+    precio: 0
+  }
+
+  almacen: Almacen = {
+    direccion: "",
+    id: 0,
+    nombreAlmacen: "",
+    telefono: ""
+  }
+
+  constructor(private datos: ServiciosDatosService) { }
 
   ngOnInit(): void {
     this.cargarProductos();
@@ -24,6 +40,8 @@ export class InventarioComponent {
       console.log(this.arrayProductos);
     });
   }
+
+
 
   private cargarAlmacen() {
     this.datos.seleccionarAlamacen().subscribe((nomina) => {
@@ -75,5 +93,30 @@ export class InventarioComponent {
     );
   }
 
+  seleccionarProductos(productoID: any): void {
+    console.log(productoID)
+    const producto = this.arrayProductos.find((producto) => producto.id === productoID)
+    console.log(producto);
+    this.producto = producto
+    this.producto.id = productoID
+  }
+
+  agregarProducto(): void {
+    this.datos.guardarProducto(this.producto).subscribe(
+      (response) => console.log(response), (error) => location.reload())
+  }
+
+  seleccionarAlmacen(almacenID: any): void {
+    console.log(almacenID)
+    const almacen = this.arrayAlmacen.find((almacen) => almacen.id === almacenID)
+    console.log(almacen);
+    this.almacen = almacen
+    this.almacen.id = almacenID
+  }
+
+  agregarAlmacen(): void {
+    this.datos.guardarAlmacen(this.almacen).subscribe(
+      (response) => console.log(response), (error) => location.reload())
+  }
 
 }

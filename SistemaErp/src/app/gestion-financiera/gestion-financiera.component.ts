@@ -18,8 +18,9 @@ export class GestionFinancieraComponent {
     descripcion: '',
     probabilidad: '',
     impacto: '',
-    medidas: '',
-    estado: '',
+    medidasMitigacion: '',
+    estados: '',
+    id: 0
   };
 
   ngOnInit(): void {
@@ -79,6 +80,12 @@ export class GestionFinancieraComponent {
         // Manejar errores aquí...
       }
     );
+  }
+  seleccionarRiesgo(idRiesgo: any): void{
+    const riesgo = this.arrayRiesgos.find((riesgo) => riesgo.id == idRiesgo)
+    console.log(riesgo)
+    this.datosGestion = riesgo;
+    this.datosGestion.id = idRiesgo
   }
 
 }

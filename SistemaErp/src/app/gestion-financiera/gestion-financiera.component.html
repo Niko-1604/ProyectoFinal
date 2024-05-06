@@ -46,14 +46,14 @@
       class="form-input"
       placeholder="Medidas de Mitigación"
       required
-      [(ngModel)]="datosGestion.medidas"
+      [(ngModel)]="datosGestion.medidasMitigacion"
     />
     <input
       type="text"
       class="form-input"
       placeholder="Estado (No mitigado, En proceso, Mitigado)"
       required
-      [(ngModel)]="datosGestion.estado"
+      [(ngModel)]="datosGestion.estados"
     />
     <button type="submit" class="button" (click)="guardarRiesgo()">
       Añadir Riesgo
@@ -71,6 +71,7 @@
         <th>Impacto</th>
         <th>Medidas de Mitigación</th>
         <th>Estado</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -83,8 +84,11 @@
         <td>{{ nomina.estados }}</td>
 
         <td>
-          <button class="btn-delete" (click)="eliminarRiesgo(nomina.id)">
+          <button class="btn btn-danger" (click)="eliminarRiesgo(nomina.id)">
             Eliminar
+          </button>
+          <button class="btn btn-primary" (click)="seleccionarRiesgo(nomina.id)">
+            Editar
           </button>
         </td>
       </tr>

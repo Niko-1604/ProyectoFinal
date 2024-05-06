@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { dataServices } from './dataServices';
-import { DatosNomina, gestionRiegos } from './modelos/modelos';
+import { Almacen, Cliente, DatosNomina, Producto, gestionRiegos } from './modelos/modelos';
 
 @Injectable({
   providedIn: 'root',
@@ -40,8 +40,16 @@ export class ServiciosDatosService {
     return this.datos.eliminarRiesgos(idRiesgo);
   }
 
+  guardarProducto(producto:Producto){
+    return this.datos.guardarProducto(producto)
+  }
+
   eliminarProducto(idProducto: any) {
     return this.datos.eliminarProducto(idProducto);
+  }
+
+  guardarAlmacen(almacen: Almacen){
+    return this.datos.guardarAlmacen(almacen);
   }
 
   eliminarAlmacen(idAlmacen: any) {
@@ -50,6 +58,10 @@ export class ServiciosDatosService {
 
   eliminarMarcas(idMarca: any) {
     return this.datos.eliminarMarcas(idMarca);
+  }
+
+  guardarCliente(cliente: Cliente){
+    return this.datos.guardarCliente(cliente);
   }
 
   eliminarCliente(idCliente: any) {

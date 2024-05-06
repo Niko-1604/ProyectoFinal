@@ -17,6 +17,7 @@ export class GestionUsuarioComponent {
     permiso: false,
     status: '',
     salario: 0,
+    id: 0
   };
 
   ngOnInit(): void {
@@ -34,6 +35,15 @@ export class GestionUsuarioComponent {
     this.datos.guardarEmpleado(this.datosNomina).subscribe(
       (res) => {
         console.log(res);
+        this.datosNomina = {
+          nombre: '',
+          apellido: '',
+          permiso: false,
+          status: '',
+          salario: 0,
+          id: 0
+        };
+      
         alert('Hemos envidao tu informacion al correo ');
         location.reload();
       },
@@ -56,4 +66,14 @@ export class GestionUsuarioComponent {
       }
     );
   }
+
+
+  seleccionarEmpleado(EmpleadoID: any):void{
+    console.log(EmpleadoID)
+      const empleado = this.arrayNomina.find((empleado)=> empleado.id === EmpleadoID)
+      console.log(empleado);
+      this.datosNomina = empleado
+      this.datosNomina.id = EmpleadoID
+  }
+
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DatosNomina, gestionRiegos } from './modelos/modelos';
+import { Almacen, Cliente, DatosNomina, Producto, gestionRiegos } from './modelos/modelos';
 import { CookieService } from 'ngx-cookie-service'; // Importa el servicio de cookies de ngx-cookie-service
 
 @Injectable({
@@ -116,11 +116,19 @@ export class dataServices {
     );
   }
 
+  guardarProducto(producto: Producto): Observable<any>{
+    return this.httpClient.post(this.url+'guardarProducto',producto)
+  }
+
   eliminarProducto(idProducto: any): Observable<any> {
     console.log(this.url + 'eliminarProducto' + '/' + idProducto);
     return this.httpClient.delete(
       this.url + 'eliminarProducto' + '/' + idProducto
     );
+  }
+
+  guardarAlmacen(almacen: Almacen): Observable<any>{
+    return this.httpClient.post(this.url+'guardarAlmacen',almacen)
   }
 
   eliminarAlmacen(idAlmacen: any): Observable<any> {
@@ -135,6 +143,12 @@ export class dataServices {
     return this.httpClient.delete(
       this.url + 'eliminarMarcas' + '/' + idMarca
     );
+  }
+
+  guardarCliente(cliente: Cliente): Observable<any>{
+    return this.httpClient.post(
+      this.url + 'guardarCliente',cliente
+    )
   }
 
   eliminarCliente(idCliente: any): Observable<any> {

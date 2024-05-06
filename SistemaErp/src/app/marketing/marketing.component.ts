@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ServiciosDatosService } from '../servicios-datos.service';
+import { Cliente } from '../modelos/modelos';
 
 @Component({
   selector: 'app-marketing',
@@ -9,6 +10,15 @@ import { ServiciosDatosService } from '../servicios-datos.service';
 export class MarketingComponent {
   constructor(private datos: ServiciosDatosService) {}
   arrayCliente: any[] = [];
+
+  cliente: Cliente = {
+    id: 0,
+    apellido:"",
+    correo:"",
+    direccion:"",
+    nombre:"",
+    telefono:""
+  }
 
   asunto: string = '';
   texto: string = '';
@@ -45,6 +55,26 @@ export class MarketingComponent {
 
   eliminarCliente(idCliente: any): void {
     this.datos.eliminarCliente(idCliente).subscribe(
+      (response) => {
+        console.log('exito', response);
+      },
+      (error) => {
+        location.reload();
+        // Manejar errores aquí...
+      }
+    );
+  }
+
+  seleccionarCliente(idCliente: any): void {
+    console.log(idCliente)
+    const cliente = this.arrayCliente.find((cliente) => cliente.id === idCliente)
+    console.log(cliente);
+    this.cliente = cliente
+    this.cliente.id = idCliente
+  }
+
+  guardarCliente():void{
+    this.datos.guardarCliente(this.cliente).subscribe(
       (response) => {
         console.log('exito', response);
       },
