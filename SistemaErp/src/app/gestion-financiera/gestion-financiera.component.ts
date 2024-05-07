@@ -8,7 +8,10 @@ import { ServiciosDatosService } from '../servicios-datos.service';
   styleUrls: ['./gestion-financiera.component.css'],
 })
 export class GestionFinancieraComponent {
-  constructor(private datos: ServiciosDatosService) {}
+  userRol: number = 0;
+  constructor(private datos: ServiciosDatosService) 
+  {this.userRol = Number(localStorage.getItem('rol'));}
+  
   arraySalariosTotal: any[] = [];
   arraySalarioMayor: any[] = [];
   arraySalarioMenor: any[] = [];

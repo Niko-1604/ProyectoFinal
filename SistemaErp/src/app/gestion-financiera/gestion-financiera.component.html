@@ -16,7 +16,7 @@
   </div>
 </body>
 
-<div class="container">
+<div class="container" *ngIf="userRol === 1">
   <h1>Gestión de Riesgos</h1>
   <h2>Añadir Nuevo Riesgo</h2>
   <div>
@@ -71,7 +71,7 @@
         <th>Impacto</th>
         <th>Medidas de Mitigación</th>
         <th>Estado</th>
-        <th>Acciones</th>
+        <th *ngIf="userRol === 1">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -83,7 +83,7 @@
         <td>{{ nomina.medidasMitigacion }}</td>
         <td>{{ nomina.estados }}</td>
 
-        <td>
+        <td *ngIf="userRol === 1">
           <button class="btn btn-danger" (click)="eliminarRiesgo(nomina.id)">
             Eliminar
           </button>

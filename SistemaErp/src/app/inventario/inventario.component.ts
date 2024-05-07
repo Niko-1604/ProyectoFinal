@@ -8,6 +8,7 @@ import { Almacen, Producto } from '../modelos/modelos';
   styleUrls: ['./inventario.component.css'],
 })
 export class InventarioComponent {
+  userRol: number = 0;
   arrayProductos: any[] = [];
   arrayAlmacen: any[] = [];
   arrayMarcas: any[] = [];
@@ -27,7 +28,9 @@ export class InventarioComponent {
     telefono: ""
   }
 
-  constructor(private datos: ServiciosDatosService) { }
+  constructor(private datos: ServiciosDatosService) {
+    this.userRol = Number(localStorage.getItem('rol'));
+   }
 
   ngOnInit(): void {
     this.cargarProductos();

@@ -6,6 +6,9 @@
     class="btn btn-primary btn-agregar-empleado"
     data-toggle="modal"
     data-target="#addServiceModal"
+  
+    
+    *ngIf="userRol === 1"
   >
     Agregar Empleado
   </button>
@@ -106,7 +109,7 @@
         <th>permiso</th>
         <th>status</th>
         <th>salario</th>
-        <th>Acciones</th>
+        <th *ngIf="userRol === 1">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -118,7 +121,7 @@
         <td>{{ nomina.status }}</td>
         <td>{{ nomina.salario }}</td>
 
-        <td>
+        <td *ngIf="userRol === 1">
           <button class="btn-delete" (click)="eliminarServico(nomina.id)">
             Eliminar
           </button>

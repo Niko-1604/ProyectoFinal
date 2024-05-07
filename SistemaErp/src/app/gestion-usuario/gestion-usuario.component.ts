@@ -9,7 +9,11 @@ import { DatosNomina } from '../modelos/modelos'; // Importa la clase DatosNomin
 })
 export class GestionUsuarioComponent {
   arrayNomina: any[] = [];
-  constructor(private datos: ServiciosDatosService) {}
+  //copiar linea 12 y 14
+  userRol: number = 0;
+  constructor(private datos: ServiciosDatosService) {
+    this.userRol = Number(localStorage.getItem('rol'));
+  }
 
   datosNomina: DatosNomina = {
     nombre: '',

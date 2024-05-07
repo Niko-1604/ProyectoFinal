@@ -16,10 +16,10 @@ export class LoginComponent {
 
   usuario: string = '';
   contrasenia: string = '';
-  array: any[] = [];
+
   login() {
     this.datos.login(this.usuario, this.contrasenia).subscribe((response) => {
-      this.array = Object.values(response.e);
+      localStorage.setItem('rol',response.user.rol)
       console.log(response);
 
       if (this.datos) {
