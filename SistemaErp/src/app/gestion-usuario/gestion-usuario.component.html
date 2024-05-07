@@ -7,7 +7,7 @@
     data-toggle="modal"
     data-target="#addServiceModal"
   
-    
+
     *ngIf="userRol === 1"
   >
     Agregar Empleado
@@ -136,7 +136,7 @@
   </table>
 
 
-  <!-- <div class="container">
+ <div class="container" *ngIf="userRol === 2">
     <h1>Evaluación del Desempeño</h1>
     <form>
       <h2>Información del Empleado</h2>
@@ -189,6 +189,6 @@
 
       <button type="submit" class="button">Enviar Evaluación</button>
     </form>
-  </div> -->
+  </div>
 
 </body>

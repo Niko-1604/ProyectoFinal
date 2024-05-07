@@ -8,7 +8,11 @@ import { Cliente } from '../modelos/modelos';
   styleUrls: ['./marketing.component.css'],
 })
 export class MarketingComponent {
-  constructor(private datos: ServiciosDatosService) {}
+  
+  userRol: number = 0;
+  constructor(private datos: ServiciosDatosService) {
+    this.userRol = Number(localStorage.getItem('rol'));
+  }
   arrayCliente: any[] = [];
 
   cliente: Cliente = {

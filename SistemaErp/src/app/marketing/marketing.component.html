@@ -2,6 +2,7 @@
   <div class="container">
     <h1>Listado de Clientes</h1>
     <button
+    *ngIf="userRol === 1"
     type="button"
     class="btn btn-primary btn-agregar-empleado"
     data-toggle="modal"
@@ -91,7 +92,7 @@
           <th>Correo</th>
           <th>Teléfono</th>
           <th>Dirección</th>
-          <th>Acciones</th>
+          <th *ngIf="userRol === 1">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -102,7 +103,7 @@
           <td>{{ nomina.correo }}</td>
           <td>{{ nomina.telefono }}</td>
           <td>{{ nomina.direccion }}</td>
-          <td>
+          <td *ngIf="userRol === 1">
             <button class="btn btn-danger" (click)="eliminarCliente(nomina.id)">
               Eliminar
             </button>
