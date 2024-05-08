@@ -2,17 +2,22 @@ import { Component } from '@angular/core';
 import { ServiciosDatosService } from '../servicios-datos.service';
 import { DatosNomina } from '../modelos/modelos'; // Importa la clase DatosNomina
 
+
 @Component({
   selector: 'app-gestion-usuario',
   templateUrl: './gestion-usuario.component.html',
   styleUrls: ['./gestion-usuario.component.css'],
 })
+
+
+
 export class GestionUsuarioComponent {
   arrayNomina: any[] = [];
   //copiar linea 12 y 14
   userRol: number = 0;
   constructor(private datos: ServiciosDatosService) {
     this.userRol = Number(localStorage.getItem('rol'));
+    
   }
 
   datosNomina: DatosNomina = {
@@ -79,5 +84,10 @@ export class GestionUsuarioComponent {
       this.datosNomina = empleado
       this.datosNomina.id = EmpleadoID
   }
+
+
+
+
+
 
 }
